@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detetive</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="flex-inline">
+        <div id="days-prison">
+
+        </div>
+        <div id="days-ocurred">
+
+        </div>
+        <div>
+            <input type="number" placeholder="inserir horas" id="hourInput" min="1" max="36" value="4">
+            <button id="addHourBtn">+</button>
+        </div>
+
+    </header>
+    <section class="flex-inline">
+        <div id="board">
+        </div>
+        <div id="buttons-dice" class="flex-column">
+            <button id="rollTwoDiceSaveBtn">Iniciar / Reiniciar</button>
+            <button id="rollOneDiceBtn">Rolar 1 Dado</button>
+            <button id="rollTwoDiceBtn">Rolar 2 Dados</button>
+            <select name="countries" id="countries">
+            </select>
+            <div id="locations">
+            </div>
+            <div id="logs-dice"></div>
+        </div>
+    </section>
+    <main class="flex-inline">
+
+        <article id="cards">
+            <!-- <img src="./assets/img/card/criminoso_1.png" id="img1" ondblclick="removeImage('img1')">
+            <img src="./assets/img/card/criminoso_1.png" id="img2" ondblclick="removeImage('img2')">
+            <img src="./assets/img/card/criminoso_1.png" id="img3" ondblclick="removeImage('img3')">
+            <img src="./assets/img/card/criminoso_1.png" id="img4" ondblclick="removeImage('img4')">
+            <img src="./assets/img/card/criminoso_1.png" id="img5" ondblclick="removeImage('img5')"> -->
+        </article>
+        <section id="activated-card">
+            <!-- <img src="./assets/img/card/detetive_1.png" id="img" onclick="removeImage('img1')"> -->
+        </section>
+    </main>
+
+    <!-- Adicionando o elemento de áudio -->
+    <audio id="soundCard" src="./assets/audio/flip-card.mp3"></audio>
+    <audio id="soundTrip" src="./assets/audio/trip.mp3"></audio>
+    <audio id="soundPolice" src="./assets/audio/police.mp3"></audio>
+    <audio id="soundGameOver" src="./assets/audio/game-over.mp3"></audio>
+    <audio id="soundDice" src="./assets/audio/dice.mp3"></audio>
+    <audio id="soundDices" src="./assets/audio/dices.mp3"></audio>
+
+    <!-- <button id="detectiveBtn">Sorteio Detetive</button>
+    <div id="resultDetective"></div>
+
+    <button id="rollOneDiceBtn">Rolar 1 Dado</button>
+    <button id="rollTwoDiceBtn">Rolar 2 Dados</button>
+    <button id="rollTwoDiceSaveBtn">Rolar 2 Dados (Guardar Soma)</button>
+    <div id="diceResult"></div>
+
+    <div>
+        <label for="hourInput">Insira as horas: </label>
+        <input type="number" id="hourInput" min="0">
+        <button id="addHourBtn">Adicionar Horas</button>
+    </div>
+    <div id="timeDisplay">Dias: 0, Horas: 0</div>
+
+    <div id="bottomButtons">
+        <img src="./img/card/detetive_1.png" id="img1" ondblclick="removeImage('img1')">
+        <img src="./img/card/detetive_1.png" id="img2" ondblclick="removeImage('img2')">
+        <img src="./img/card/detetive_1.png" id="img3" ondblclick="removeImage('img3')">
+        <img src="./img/card/detetive_1.png" id="img4" ondblclick="removeImage('img4')">
+        <img src="./img/card/detetive_1.png" id="img5" ondblclick="removeImage('img5')">
+    </div> -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

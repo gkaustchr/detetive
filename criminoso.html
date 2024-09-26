@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminoso</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="flex-inline">
+        <div id="board">
+        </div>
+        <div id="buttons-dice" class="flex-column">
+            <button id="criminalBtn" onclick="initGameCriminal()">Iniciar / Reiniciar</button>
+            <button  onclick="gameOver()">Game Over</button>
+            </select>
+            <div id="locations">
+            </div>
+        </div>
+    </section>
+    <main class="flex-inline">
+
+        <article id="cards">
+            
+        </article>
+        <section id="activated-card">
+            <!-- <img src="./assets/img/card/detetive_1.png" id="img" onclick="removeImage('img1')"> -->
+        </section>
+    </main>
+
+    <!-- Adicionando o elemento de áudio -->
+    <audio id="soundCard" src="./assets/audio/flip-card.mp3"></audio>
+    <audio id="soundTrip" src="./assets/audio/trip.mp3"></audio>
+    <audio id="soundPolice" src="./assets/audio/police.mp3"></audio>
+    <audio id="soundGameOver" src="./assets/audio/game-over.mp3"></audio>
+    <audio id="soundDice" src="./assets/audio/dice.mp3"></audio>
+    <audio id="soundDices" src="./assets/audio/dices.mp3"></audio>
+
+
+    <!-- <button id="criminalBtn">Sorteio Criminoso</button>
+    <div id="result"></div> -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>

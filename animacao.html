@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação com Som e Posição</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #container {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            border: 1px solid black;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #button1 {
+            left: 0;
+        }
+
+        #button2 {
+            right: 0;
+        }
+
+        #animateButton {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+        }
+
+        #image {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            transition: all 1s ease; /* Animação suave */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <button id="button1">Botão 1</button>
+        <button id="button2">Botão 2</button>
+        <button id="animateButton">Mover Imagem</button>
+        <img src="./assets/img/card/detetive_1.png" alt="Imagem" id="image">
+
+        <!-- Adicionando o elemento de áudio -->
+        <audio id="animationSound" src="./assets/audio/flip-card.mp3"></audio>
+    </div>
+
+    <script>
+        const button1 = document.getElementById('button1');
+        const button2 = document.getElementById('button2');
+        const animateButton = document.getElementById('animateButton');
+        const image = document.getElementById('image');
+        const sound = document.getElementById('animationSound');  // Elemento de áudio
+
+        // Função para mover a imagem da posição do botão 1 para o botão 2
+        function moveImageWithDelay() {
+            // Reproduzir o som
+            sound.currentTime = 0;  // Reinicia o áudio desde o início
+            sound.play();            // Reproduz o áudio
+
+            // Pegar as coordenadas do botão 1
+            const button1Pos = button1.getBoundingClientRect();
+            const button2Pos = button2.getBoundingClientRect();
+
+            // Definir a posição inicial da imagem para a posição do botão 1
+            image.style.left = button1Pos.left + "px";
+            image.style.top = button1Pos.top + "px";
+
+            // Após 1 segundo, mover a imagem para a posição do botão 2
+            setTimeout(() => {
+                image.style.left = button2Pos.left + "px";
+                image.style.top = button2Pos.top + "px";
+            }, 1000); // Delay de 1 segundo
+        }
+
+        // Adicionar evento de clique no botão "Mover Imagem"
+        animateButton.addEventListener('click', moveImageWithDelay);
+    </script>
+
+</body>
+</html>

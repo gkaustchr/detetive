@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: auto;
+    position: relative;
+    font-size: 16pt;
+    -webkit-user-select: none;
+    user-select: none;
+    background-image: linear-gradient(to bottom, #1e363a, #030713);
+    color: white;
+}
+
+/* Elements */
+header {
+    width: 100%;
+    height: 10vh;
+    font-size: 16pt;
+}
+
+header input {
+    font-size: 16pt;
+    padding: 4px;
+}
+
+header button {
+    font-size: 16pt;
+    padding: 4px 8px;
+}
+
+
+#board {
+    width: 68%;
+    height: 60vh;
+    background-image: url('./assets/img/map.jpg');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#buttons-dice {
+    width: 30%;
+}
+
+
+#buttons-dice button {
+    width: 90%;
+    padding: 12px;
+}
+
+#buttons-dice select {
+    width: 90%;
+    font-size: 16pt;
+    padding: 4px 8px;
+}
+
+#locations{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4px;
+}
+
+#logs-dice {
+    width: 90%;
+    min-height: 150px;
+    max-height: 150px;
+    overflow: hidden;
+    overflow-y: auto;
+    word-wrap: break-word;
+    border: 1px solid #000;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+}
+
+
+main {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    margin-top: 12px;
+    justify-content: space-between !important;
+    padding: 4px 12px;
+    background-color: #fff;
+    /* background-image: linear-gradient(-15deg, #fff #cecece); */
+}
+
+#new-card img {
+    visibility: hidden;
+}
+
+main img {
+    width: 150px;
+    height: auto;
+    /* mix-blend-mode: darken; */
+}
+
+
+main #cards {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    /* mix-blend-mode: darken; */
+} 
+
+main #cards button{
+    padding: 8px;
+    font-size: 16pt;
+} 
+
+/* main #activated-card img:hover {
+    position: absolute;
+    transform: scale(3) translateY(-80px) translateX(-120px);
+    width: 100px;
+    height: auto;
+    mix-blend-mode: multiply;
+
+} */
+
+/* Classes */
+.flex-inline {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4px 4px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 4px 4px;
+}
+
+#bottomButtons {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(minmax(150px, 200px));
+}
+
+#bottomButtons img {
+    /* width: auto;
+    height: auto; */
+}
+
+.user-select-none {
+    -webkit-user-select: none;
+    user-select: none
+  }

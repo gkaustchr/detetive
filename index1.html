@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Interativo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #criminalBtn {
+            background-image: url('criminal.jpg'); /* Substituir pelo caminho correto da imagem */
+            background-size: cover;
+            width: 150px;
+            height: 100px;
+        }
+        #detectiveBtn {
+            background-image: url('detective.jpg'); /* Substituir pelo caminho correto da imagem */
+            background-size: cover;
+            width: 150px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="criminalBtn">Criminoso</button>
+    <button id="detectiveBtn">Detetive</button>
+    <button id="rollDiceBtn">Rolar Dado</button>
+    <button id="rollTwoDiceBtn">Rolar Dois Dados</button>
+    
+    <div>
+        <label for="hourInput">Insira as horas: </label>
+        <input type="number" id="hourInput" min="0">
+        <button id="addHourBtn">Adicionar Horas</button>
+    </div>
+    <div id="timeDisplay">Dias: 0, Horas: 0</div>
+    
+    <button id="rollTwoDiceSaveDaysBtn">Rolar Dois Dados (Salvar Dias)</button>
+
+    <div id="gameMessage"></div>
+
+    <script>
+        let criminalNumbers = Array.from({length: 20}, (_, i) => i + 1);
+        let detectiveNumbers = Array.from({length: 32}, (_, i) => i + 1);
+        let days = 0;
+        let hours = 0;
+
+        const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
+
+        document.getElementById('criminalBtn').addEventListener('click', function() {
+            if (criminalNumbers.length === 0) {
+                alert('Todos os números do criminoso já foram sorteados!');
+                return;
+            }
+            let number = criminalNumbers.splice(Math.floor(Math.random() * criminalNumbers.length), 1)[0];
+            alert(`Número sorteado do criminoso: ${number}`);
+        });
+
+        document.getElementById('detectiveBtn').addEventListener('click', function() {
+            if (detectiveNumbers.length === 0) {
+                alert('Todas as cartas do detetive já foram sorteadas!');
+                return;
+            }
+            let number = detectiveNumbers.splice(Math.floor(Math.random() * detectiveNumbers.length), 1)[0];
+            alert(`Número sorteado do detetive: ${number}`);
+        });
+
+        document.getElementById('rollDiceBtn').addEventListener('click', function() {
+            let diceValue = Math.floor(Math.random() * 6) + 1;
+            alert(`Valor do dado: ${diceValue}`);
+        });
+
+        document.getElementById('rollTwoDiceBtn').addEventListener('click', function() {
+            let dice1 = Math.floor(Math.random() * 6) + 1;
+            let dice2 = Math.floor(Math.random() * 6) + 1;
+            alert(`Valores dos dados: ${dice1}, ${dice2} (Soma: ${dice1 + dice2})`);
+        });
+
+        document.getElementById('addHourBtn').addEventListener('click', function() {
+            let addedHours = parseInt(document.getElementById('hourInput').value);
+            hours += addedHours;
+
+            if (hours >= 24) {
+                let extraDays = Math.floor(hours / 24);
+                hours = hours % 24;
+                days += extraDays;
+            }
+            updateTimeDisplay();
+        });
+
+        function updateTimeDisplay() {
+            document.getElementById('timeDisplay').innerText = `Dias: ${days}, Horas: ${hours}`;
+        }
+
+        let totalDaysRolled = 0;
+
+        document.getElementById('rollTwoDiceSaveDaysBtn').addEventListener('click', function() {
+            let dice1 = Math.floor(Math.random() * 6) + 1;
+            let dice2 = Math.floor(Math.random() * 6) + 1;
+            let totalRolled = dice1 + dice2;
+            totalDaysRolled += totalRolled;
+
+            alert(`Valores dos dados: ${dice1}, ${dice2} (Soma: ${totalRolled}). Dias acumulados: ${totalDaysRolled}`);
+
+            if (totalDaysRolled >= days) {
+                document.getElementById('gameMessage').innerText = 'Fim de Jogo! O somatório dos dias superou os dias rolados.';
+            }
+        });
+    </script>
+
+</body>
+</html>
