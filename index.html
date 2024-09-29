@@ -1,34 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo Interativo - Página Inicial</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-        button {
-            padding: 20px;
-            margin: 20px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body class="">
+<html lang="pt-br">
 
-    <button onclick="window.location.href='criminoso.html'">Criminoso</button>
-    <button onclick="window.location.href='detetive.html'">Detetive</button>
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Detecti</title>
+</head>
+
+<body class="d-flex justify-content-around" id="oppening">
+
+    <button onclick="window.location.href='detetive.html'" class="p-2 flex-fill bd-highlight" data-toggle="tooltip"
+        data-placement="top" title="Jogue como detetive">Detetive</button>
+
+    <button onclick="window.location.href='criminoso.html'" class="p-2 flex-fill bd-highlight" data-toggle="tooltip"
+        data-placement="top" title="Jogue como criminoso">Criminoso</button>
+
+    <!-- Botão para acionar modal -->
+    <button id="learnToPlay" type="button" class="close" data-dismiss="modal" aria-label="Fechar" data-toggle="modal"
+        data-target="#ModalLongoExemplo" data-toggle="tooltip" data-placement="left" title="Aprenda a jogar">
+        <!-- <span aria-hidden="true">&times;</span> -->
+        <span class="material-symbols-outlined" aria-hidden="true">
+            question_mark
+        </span>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalLongoExemplo" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TituloModalLongoExemplo">Como jogar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true" class="material-symbols-outlined">
+                            close
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        1. Preparação Inicial
+                        Embaralhar Cartas: Todas as cartas (exceto as de Retrato Falado, de Locais e de Tempo de Viagem)
+                        devem ser embaralhadas e colocadas viradas para baixo.
+                        Cartas Visíveis: As cartas de Retrato Falado, Locais e Viagem devem ser colocadas viradas para
+                        cima, à vista de todos, durante todo o jogo.
+                    </p>
+                    <p>
+                        2. Divisão de Papéis
+                        O jogo é dividido em dois grupos: Detetive(s) e Criminoso.
+                        De 2 a 6 pessoas podem jogar. Apenas um jogador assume o papel de Criminoso; os demais são
+                        Detetives (veja mais sobre modos de jogo em "Modos de Jogo").
+                    </p>
+                    <p>
+                        3. Início do Jogo
+                        Escolha quem será o Criminoso da rodada (ver "Modos de Jogo").
+                        Criminoso: Compra uma carta de Ato do Criminoso e uma carta de Criminoso.
+                        Pega cartas de Países conforme indicado na carta de Ato.
+
+                        Detetive: Joga dois dados para determinar quantos dias terá para prender o criminoso (mínimo de
+                        4 dias, exceto no modo de jogo "Vários Detetives").
+                        Compra 5 cartas de Ação para iniciar o jogo.
+                        Após a primeira narrativa do criminoso, o detetive escolhe o país e o local onde vai iniciar,
+                        sem gasto de tempo na primeira rodada.
+                    <p>
+                        4. História Inicial
+                        4. História Inicial um país inicial entre as cartas que possui de países e conta uma breve
+                        história sobre o que ele roubou e onde o crime ocorreu. Seja criativo para tornar o jogo mais
+                        interessante.
+                    </p>
+                    <p>
+                        Objetivo do Jogo
+                        Detetive(s): Coletar informações para emitir um mandado de prisão contra o Criminoso. Descobrir
+                        onde ele está e quem ele é (país, local e mandato) e prendê-lo.
+                        Criminoso: Criar e narrar uma história coerente para continuar no jogo, usando perguntas dos
+                        detetives para manipular a narrativa e fugir deles, seja honesto e criativo.
+                        Regras de Movimentação
+                        Detetive(s):
+                        Podem se movimentar entre todos os países, cada viagem tem um custo de tempo:
+                        Dentro do mesmo continente: 6 horas.
+                        Horizontal (mesma linha): 24 horas.
+                        Vertical (mesma coluna): 12 horas.
+                        Diagonal: 30 horas.
+                        Entre locais (bar, igreja, etc.): 4 horas.
+                        Cada rodada o detetive deve indicar se se mantém, muda de local ou viaja para outro país.
+                        </p>
+                        <p>
+                        Criminoso: Deve escolher um país inicial e não pode voltar a um país já visitado, exceto se
+                        permitido por uma carta de Ato.
+                        Se não houver mais países disponíveis, ele permanece no último país até ser capturado ou o tempo
+                        acabar.
+                        Não pode se movimentar na primeira rodada, deve se manter no país inicial onde aconteceu o
+                        crime.
+                        </p>
+                        <p>
+                        Regras Gerais
+                        Detetive(s):
+                        Perguntas Indiretas: Os Detetives não podem fazer perguntas diretas ao Criminoso. Exemplo de
+                        pergunta
+                        errada: "Qual o nome do país que você está?" Exemplo de pergunta
+                        correta: "O país em que você está tem uma bandeira de cor vermelha?"
+                        Tempo Extra: Se um Detetive ficar no mesmo local por mais de uma rodada, o tempo gasto dobra na
+                        próxima rodada (8 horas na segunda rodada, 16 na terceira e assim por diante).
+                        Falha de Ação: Se não conseguir atingir o valor necessário em uma ação, uma hora é adicionada ao
+                        tempo.
+                        Mandado de Prisão: O detetive precisa de um mandado de prisão para prender o criminoso. Toda
+                        rodada ele pode escolher manter ou alterar o criminoso suspeito.
+                    </p>
+                    <p>
+                        Criminoso:
+                        Blefe Limitado: Não pode blefar, exceto se permitido pela carta de Ato.
+                        Movimentação Inicial: O Criminoso não pode se movimentar na primeira rodada.
+                        Movimentação: O Criminoso deve utilizar o número que saiu no dado na rodada atual para se
+                        movimentar
+                    </p>
+                    <p>
+                        Cartas do Jogo
+                        Carta de Ato
+                        O Criminoso deve pegar uma carta de Ato no início do jogo.
+                        Ela mostra as habilidades, locais e cartas que o Criminoso pode ter.
+                        Cada carta possui uma habilidade especial.
+                        Carta de Ação
+                        Cada Detetive deve comprar 5 cartas de Ação para iniciar o jogo.
+                        As cartas mostram as ações que o Detetive pode realizar e qual valor deve ser obtido nos dados
+                        para executá-las.
+                        As cartas devem ser utilizadas em modo de ataque, em cada rodada selecione uma carta da sua mão
+                        e deixe em modo de ataque.
+                        Se o Detetive conseguir realizar a ação (tirar o valor necessário nos dados), a carta é
+                        descartada. Caso contrário, a carta volta para sua mão, precisando de uma rodada de recarga.
+                        Após descartar uma carta, o Detetive deve comprar outra, mantendo sempre 5 cartas em mão.
+                        Se o monte de compra esgotar, embaralhe o descarte para formar um novo monte.
+                        Carta de Países
+                        Utilizadas pelo Criminoso para contar a história.
+                        Contêm dicas sobre o país, ajudando o Criminoso na narrativa.
+                        Carta de Retrato Falado
+                        Fica visível durante todo o jogo.
+                        Mostra a imagem do criminoso e serve como apoio para o pedido de mandado.
+                        Carta de Criminoso
+                        Contém as características do personagem do Criminoso.
+                        O criminoso pega apenas uma carta por partida (ver "Modos de jogo").
+                        Carta de Locais
+                        Existem 6 cartas de locais onde o Criminoso pode estar escondido.
+                        Os locais são utilizados pelos Detetives para fazer buscas.
+                        Devem ser utilizadas em ordem alfabética para facilitar a jogabilidade.
+                        Carta de Viagem
+                        Serve de apoio para identificar o tempo gasto em cada tipo de viagem.
+                        É recomendável mantê-las sempre à mão para facilitar o andamento do jogo.
+                        Utilize algo para calcular o gasto de horas.
+                    </p>
+                    <p>
+                        Fim de Jogo
+                        O jogo termina quando o detetive prende o criminoso no tempo determinado.
+                        Caso o detetive prenda o criminoso errado ou o tempo acabe, o criminoso vence (ver "Modos de
+                        Jogo").
+                        Caso o detetive e o criminoso estejam no mesmo local e país, o criminoso deve se acusar e os
+                        dados são lançados. O valor do detetive deve ser maior do que o do criminoso para a prisão ser
+                        realizada (até três tentativas), excedendo o número de tentativas, o criminoso vence.
+                        Caso, o detetive tenha um mandato para um criminoso diferente, o criminoso não deve se acusar,
+                        exceto no modo de jogos criminoso fixo (ver "Modos de Jogo").
+                        Modos de Jogo
+                        Um Detetive: Pode ser uma única pessoa ou um grupo cooperando.
+                        O detetive vence quando captura o criminoso correto no tempo determinado.
+
+                        Vários Detetives: Há 5 dias fixos para capturar o criminoso.
+                        Cada detetive controla seu próprio tempo e movimentos. Vence quem capturar o criminoso primeiro.
+
+                        Criminoso Rotativo: Todos os jogadores serão criminosos em partidas diferentes, com as cartas
+                        embaralhadas para cada nova partida.
+
+                        Um Criminoso para Várias Partidas: A cada partida, a carta de criminoso capturado é removido. O
+                        jogo termina quando o detetive captura 5 criminosos diferentes, o detetive pode capturar um
+                        criminoso errado, caso isso aconteça, o criminoso informa na próxima partida que ele foi solto e
+                        o detetive deve capturar outro criminoso, e a carta do criminoso solto volta ao jogo.
+                        Pode-se mesclar os modos de jogo de Detetive e Criminoso.
+                        Bom jogo!
+
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok, entendi!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- <button onclick="window.location.href='animacao.html'">Animação</button> -->
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -1,14 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detetive</title>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <link rel="stylesheet" href="styles.css">
+    <title>Detetive</title>
 </head>
 
-<body>
+<!-- <body onload="initGameDetetive()"> -->
+
+<body onload="getflags()">
+
+    <!-- Modal -->
+    <div class="modal fade show" id="modalInit" tabindex="-1" role="dialog"
+        aria-labelledby="TituloModalCentralizado" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TituloModalCentralizado">Detetive</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button> -->
+                </div>
+                <div class="modal-body">
+                    Aguarde o <b>Criminoso</b> contar a história.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="closeModalInit()">Iniciar partida</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <header class="flex-inline">
         <div id="days-prison">
 
@@ -18,35 +51,93 @@
         </div>
         <div>
             <input type="number" placeholder="inserir horas" id="hourInput" min="1" max="36" value="4">
-            <button id="addHourBtn">+</button>
+            <!-- <input type="number" class="form-control" placeholder="inserir horas"
+            id="hourInput" min="1" max="36" value="4"> -->
+            <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom"
+                title="Adicionar tempo decorrido" id="addHourBtn">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+            </button>
+            <!-- <button id="addHourBtn">+</button> -->
         </div>
 
     </header>
+
     <section class="flex-inline">
         <div id="board">
         </div>
         <div id="buttons-dice" class="flex-column">
-            <button id="rollTwoDiceSaveBtn">Iniciar / Reiniciar</button>
-            <button id="rollOneDiceBtn">Rolar 1 Dado</button>
-            <button id="rollTwoDiceBtn">Rolar 2 Dados</button>
-            <select name="countries" id="countries">
+            <!-- <button id="rollTwoDiceSaveBtn">Iniciar / Reiniciar</button> -->
+            <div class="flex-inline">
+                <button type="button" class="btn btn-outline-primary" id="rollOneDiceBtn" data-toggle="tooltip"
+                    data-placement="top" title="Girar 1 dado">
+                    <span class="material-symbols-outlined">
+                        casino
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-primary" id="rollTwoDiceBtn" data-toggle="tooltip"
+                    data-placement="top" title="Girar 2 dados">
+                    <span class="material-symbols-outlined">
+                        ifl
+                    </span>
+                    <span class="material-symbols-outlined">
+                        casino
+                    </span>
+                </button>
+                <!-- <button id="rollOneDiceBtn">Rolar 1 Dado</button>
+                <button id="rollTwoDiceBtn">Rolar 2 Dados</button> -->
+            </div>
+            <div class="flex-inline">
+                <button type="button" class="btn btn-outline-primary" data-placement="top" title="Países para viajar"
+                    data-toggle="tooltip" onclick="openModalInfo('countries')">
+                    <span class="material-symbols-outlined">
+                        travel_explore
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" onclick="openModalInfo('local')"
+                    title="Locais para investigar">
+                    <span class="material-symbols-outlined">
+                        location_on
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" onclick="openModalInfo('criminal')"
+                    title="Retrato falado, consiga um mandato">
+                    <span class="material-symbols-outlined">
+                        detection_and_zone
+                    </span>
+                </button>
+            </div>
+            <div class="flex-inline">
+                <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" onclick="openModalInfo('prison')"
+                    title="Prender criminoso! Finaliza e reinicia a partida.">
+                    <span class="material-symbols-outlined">
+                        local_police
+                    </span>
+                </button>
+                <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" onclick="openModalInfo('detetive')"
+                    title="Histórico">
+                    <span class="material-symbols-outlined">
+                        clinical_notes
+                    </span>
+                </button>
+            </div>
+            <p class="h6" id="text-country">País: </p>
+            <p class="h6" id="text-local">Local: </p>
+            <p class="h6" id="text-criminal">Criminoso: </p>
+            <!-- <select name="countries" id="countries">
             </select>
             <div id="locations">
-            </div>
+            </div> -->
             <div id="logs-dice"></div>
         </div>
     </section>
+    
+    <!-- CARDS -->
     <main class="flex-inline">
-
         <article id="cards">
-            <!-- <img src="./assets/img/card/criminoso_1.png" id="img1" ondblclick="removeImage('img1')">
-            <img src="./assets/img/card/criminoso_1.png" id="img2" ondblclick="removeImage('img2')">
-            <img src="./assets/img/card/criminoso_1.png" id="img3" ondblclick="removeImage('img3')">
-            <img src="./assets/img/card/criminoso_1.png" id="img4" ondblclick="removeImage('img4')">
-            <img src="./assets/img/card/criminoso_1.png" id="img5" ondblclick="removeImage('img5')"> -->
         </article>
         <section id="activated-card">
-            <!-- <img src="./assets/img/card/detetive_1.png" id="img" onclick="removeImage('img1')"> -->
         </section>
     </main>
 
@@ -58,28 +149,45 @@
     <audio id="soundDice" src="./assets/audio/dice.mp3"></audio>
     <audio id="soundDices" src="./assets/audio/dices.mp3"></audio>
 
-    <!-- <button id="detectiveBtn">Sorteio Detetive</button>
-    <div id="resultDetective"></div>
-
-    <button id="rollOneDiceBtn">Rolar 1 Dado</button>
-    <button id="rollTwoDiceBtn">Rolar 2 Dados</button>
-    <button id="rollTwoDiceSaveBtn">Rolar 2 Dados (Guardar Soma)</button>
-    <div id="diceResult"></div>
-
-    <div>
-        <label for="hourInput">Insira as horas: </label>
-        <input type="number" id="hourInput" min="0">
-        <button id="addHourBtn">Adicionar Horas</button>
+    <!-- Modal -->
+    <div class="modal fade" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModalInfo">Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"
+                        onclick="closeModalInfo()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-info-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="closeModalInfo()">Fechar</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="timeDisplay">Dias: 0, Horas: 0</div>
 
-    <div id="bottomButtons">
-        <img src="./img/card/detetive_1.png" id="img1" ondblclick="removeImage('img1')">
-        <img src="./img/card/detetive_1.png" id="img2" ondblclick="removeImage('img2')">
-        <img src="./img/card/detetive_1.png" id="img3" ondblclick="removeImage('img3')">
-        <img src="./img/card/detetive_1.png" id="img4" ondblclick="removeImage('img4')">
-        <img src="./img/card/detetive_1.png" id="img5" ondblclick="removeImage('img5')">
-    </div> -->
+        
+    <!-- Modal IMG -->
+    <div  id="modalImgCard" >
+        <div id="modal-img-card">
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
     <script src="script.js"></script>
 

@@ -4,6 +4,41 @@
     box-sizing: border-box;
 }
 
+button {
+    outline: none !important;
+}
+
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #eec4a7 !important;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -13,8 +48,107 @@ body {
     font-size: 16pt;
     -webkit-user-select: none;
     user-select: none;
-    background-image: linear-gradient(to bottom, #1e363a, #030713);
+    background-image: linear-gradient(to bottom, #10373C, #051E25);
     color: white;
+
+
+}
+
+#oppening {
+    background-image: url('assets/img/oppening-mobile.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat;
+
+}
+
+#oppening>button {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+
+}
+
+#oppening>#learnToPlay {
+    position: absolute;
+    background-color: #10373C;
+    color: white;
+    font-size: 24pt;
+    padding: 15px;
+    border-radius: 25%;
+    bottom: 10%;
+    right: 10%;
+
+}
+
+#oppening>button:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#modalInit {
+    color: var(--dark);
+    display: block;
+}
+
+#modalInfo {
+    color: var(--dark);
+    /* display: block; */
+}
+
+#ModalLongoExemplo {
+    color: var(--dark);
+    /* display: block; */
+}
+
+#modalInfo #modal-info-body {
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+
+}
+
+#modalInfo #modal-info-body::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+#modalInfo #modal-info-body::-webkit-scrollbar-track {
+    background: white;
+    /* color of the tracking area */
+}
+
+#modalInfo #modal-info-body::-webkit-scrollbar-thumb {
+    background-color: rgb(227, 224, 224);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid white;
+    /* creates padding around scroll thumb */
+}
+
+#modalInfo #modal-info-body>div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 8px;
+
+}
+
+#modalInfo #modal-info-body>div>div {
+    display: inline;
+    text-align: center;
+    font-size: 12pt;
+    padding: 2px;
+}
+
+#modalInfo #modal-info-body img {
+    width: 80px;
+    height: auto;
 }
 
 /* Elements */
@@ -36,9 +170,9 @@ header button {
 
 
 #board {
-    width: 68%;
+    width: 60%;
     height: 60vh;
-    background-image: url('./assets/img/map.jpg');
+    background-image: url('./assets/img/map.png');
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
@@ -60,7 +194,7 @@ header button {
     padding: 4px 8px;
 }
 
-#locations{
+#locations {
     width: 90%;
     display: flex;
     flex-wrap: wrap;
@@ -70,13 +204,13 @@ header button {
 }
 
 #logs-dice {
-    width: 90%;
+    width: 100%;
     min-height: 150px;
     max-height: 150px;
     overflow: hidden;
     overflow-y: auto;
     word-wrap: break-word;
-    border: 1px solid #000;
+    border: 1px solid #ffffff;
     padding: 4px;
     display: flex;
     flex-direction: column;
@@ -84,6 +218,24 @@ header button {
 
 }
 
+#logs-dice::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+#logs-dicebody::-webkit-scrollbar-track {
+    background: white;
+    /* color of the tracking area */
+}
+
+#logs-dicebody::-webkit-scrollbar-thumb {
+    background-color: rgb(227, 224, 224);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid white;
+    /* creates padding around scroll thumb */
+}
 
 main {
     position: absolute;
@@ -94,7 +246,7 @@ main {
     margin-top: 12px;
     justify-content: space-between !important;
     padding: 4px 12px;
-    background-color: #fff;
+    /* background-color: #fff; */
     /* background-image: linear-gradient(-15deg, #fff #cecece); */
 }
 
@@ -117,21 +269,38 @@ main #cards {
     align-items: center;
     flex-wrap: wrap;
     /* mix-blend-mode: darken; */
-} 
+}
 
-main #cards button{
+main #cards button {
     padding: 8px;
     font-size: 16pt;
-} 
+}
 
-/* main #activated-card img:hover {
+main #activated-card img:hover > #modalImgCard{
+    display: block;
+
+}
+
+#modalImgCard{
+    width: 300px;
+    height: 400px;
     position: absolute;
-    transform: scale(3) translateY(-80px) translateX(-120px);
-    width: 100px;
-    height: auto;
-    mix-blend-mode: multiply;
+    margin: auto;
+    top: calc(50vh - 200px - 100px);
+    left: calc(50vw - 100px);
+    overflow: hidden;
+    align-items: center;
+    border-radius: 0.5em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
-} */
+#modalImgCard img{
+    max-width: 300px;
+    height: auto;
+    image-rendering: auto;
+}
 
 /* Classes */
 .flex-inline {
@@ -156,12 +325,40 @@ main #cards button{
     grid-template-columns: repeat(minmax(150px, 200px));
 }
 
-#bottomButtons img {
-    /* width: auto;
-    height: auto; */
-}
-
 .user-select-none {
     -webkit-user-select: none;
     user-select: none
-  }
+}
+
+.selected {
+    border-radius: 10px;
+    background-color: var(--primary);
+}
+
+
+/* // Dispositivos small (telefones em modo paisagem, com 576px ou mais) */
+@media (min-width: 576px) {
+    ...
+}
+
+/* // Dispositivos médios (tablets com 768px ou mais) */
+@media (min-width: 768px) {
+
+    #oppening {
+        background-image: url('assets/img/opening.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: repeat;
+
+    }
+}
+
+/* // Dispositivos large (desktops com 992px ou mais) */
+@media (min-width: 992px) {
+    ...
+}
+
+/* // Dispositivos extra large (desktops grandes com 1200px ou mais) */
+@media (min-width: 1200px) {
+    ...
+}
